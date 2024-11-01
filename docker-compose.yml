@@ -13,6 +13,14 @@ services:
       - SPRING_PROFILES_ACTIVE=h2
       # so as to allow remote debugging
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+  incident-portal:
+    build:
+      context: ./react-crud
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - incident-api
   # Only used to verify if the application is up and running with PG as storage.
   incident-postgres:
     image: "postgres:14-alpine"

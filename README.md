@@ -51,6 +51,8 @@ These set of APIs are designed for domain driven business logic with proper vali
 
 ## How to run
 
+### Backend
+
 In your working directory is in the root of the project, do:
 
 1. Build Image. It will produce an image named `incident-mgr` which is used in the `docker-compose.yaml`.
@@ -61,6 +63,24 @@ In your working directory is in the root of the project, do:
     ```shell
     docker-compose up -d
     ```
+   
+### Frontend
+
+There are two scenarios:
+
+* For local development
+   ```shell
+   cd react-crud
+   npm install
+   npm start
+   ```
+
+* From docker-compose
+   ```shell
+   docker-compose up incident-portal
+   ```
+
+Navigate to [portal page](http://localhost:3000) to access the frontend.
 
 ### IntelliJ IDEA
 
@@ -81,3 +101,5 @@ The `IndicentMgrApplication.run.xml` as been committed to the repository, you ca
 
 ## Roadmaps
 
+* Support comments, changelog etc in a separate table. 
+* Separate the frontend from the backend into two independent code repos.
