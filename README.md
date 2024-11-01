@@ -62,10 +62,18 @@ In your working directory is in the root of the project, do:
     docker-compose up -d
     ```
 
+### IntelliJ IDEA
+
+The `IndicentMgrApplication.run.xml` as been committed to the repository, you can import it to IntelliJ IDEA to run the application directly.
+
+
 ## Libraries Used
 
 * [Flyway](https://github.com/flyway/flyway): A database DevOps framework manage database changes along with application change.
 * [Lombok](https://projectlombok.org/): A library to reduce boilerplate code in Java to improve code readability and productivity.
+* [H2 Database](https://github.com/h2database/h2database): A in-memory database for development and testing, keep the code compatible with other databases regardless DB persistence is needed.
+* [Micrometer](https://micrometer.io/): Expose Application Runtime Metrics.
+* [Caffeine](https://github.com/ben-manes/caffeine): An in-memory cache library with more configuration options than default HashMap, works as a provider of Spring Cache Framework.
 
 ## Known Issues
 

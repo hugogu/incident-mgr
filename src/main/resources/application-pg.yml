@@ -1,0 +1,9 @@
+spring:
+  flyway:
+    url: ${spring.datasource.url}
+    user: postgres
+    password: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/incident
+    username: postgres
+    password: postgres
