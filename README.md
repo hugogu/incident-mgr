@@ -88,6 +88,17 @@ Navigate to [portal page](http://localhost:3000) to access the frontend.
 
 The `IndicentMgrApplication.run.xml` as been committed to the repository, you can import it to IntelliJ IDEA to run the application directly.
 
+## Performance Benchmark
+
+* [Install K6](https://grafana.com/docs/k6/latest/set-up/install-k6/)
+* With a local API instance running, run
+   ```shell
+   k6 run ./scripts/stress-test.js
+   ```
+   Then you will see something like this:
+   ![Benchmark](img/Benchmark.png)
+
+According to above statistics, the TPS incident creation API is around 2300 (given in-memory database.) and p(95) latency is 2ms.
 
 ## Libraries Used
 
