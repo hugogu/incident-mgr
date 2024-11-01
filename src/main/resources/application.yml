@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: incident-mgr
+  flyway:
+    url: ${spring.datasource.url}
+    user: postgres
+    password: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/incident
+    username: postgres
+    password: postgres
+  jpa:
+    # Better control transaction scope explicitly.
+    open-in-view: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, flyway, health, metrics, threaddump, loggers, mappings
