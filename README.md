@@ -82,7 +82,14 @@ Depending on scenarios:
    docker-compose up incident-portal
    ```
 
-Navigate to [portal page](http://localhost:3000) to access the frontend.
+Navigate to [portal page](http://localhost:3000) to access the frontend. 
+
+Here is the screenshot of the list page:
+![List page](./img/Paging.png)
+
+And a page to raise new incident:
+
+<img src="./img/ErrorSaving.png" alt="Description" width="548">
 
 ### IntelliJ IDEA
 
