@@ -8,7 +8,7 @@ It follows the RESTful API design principles and uses Spring Boot as the framewo
 It uses Spring Data REST framework for basic simple CRUD operations, 
 whereas customize complex APIs are implemented in the controllers.
 
-## Functionalities
+## APIs
 
 ### Spring Data REST based pure CRUD APIs.
 
@@ -53,15 +53,19 @@ These set of APIs are designed for domain driven business logic with proper vali
 
 ### Backend
 
-In your working directory is in the root of the project, do:
+:warning: You may need to turn on VPNs to download the external dependencies.
 
-1. Build Image. It will produce an image named `incident-mgr` which is used in the `docker-compose.yaml`.
+1. Build Backend Image. It will produce an image named `incident-mgr` which is used in the `docker-compose.yaml`.
     ```shell
     ./mvnw spring-boot:build-image
     ```
 2. Run
     ```shell
-    docker-compose up -d
+    docker-compose up
+    ```
+   Or this to enforce a rebuild of frontend image.
+    ```shell
+    docker-compose up --build incident-portal
     ```
    
 ### Frontend (Optional)
