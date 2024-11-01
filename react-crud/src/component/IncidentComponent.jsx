@@ -28,7 +28,7 @@ class IncidentComponent extends Component {
         }
 
         IncidentDataService.fireIncident(incident).then(
-            () => this.props.history.push('/incident')
+            () => this.props.history.push('/incidents?page=0')
         )
     }
 

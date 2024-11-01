@@ -12,8 +12,8 @@ class IncidentDataService {
         return axios.put(`${INCIDENT_API_URL}/incident/${id}`, incident);
     }
 
-    retrieveAllIncidents(name) {
-        return axios.get(`${INCIDENT_API_URL}/incident`);
+    retrieveAllIncidents(name, page, size) {
+        return axios.get(`${INCIDENT_API_URL}/incident?page=${page}&size=${size}`);
     }
 
     retrieveCourse(id) {

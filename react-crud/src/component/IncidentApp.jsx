@@ -11,8 +11,8 @@ class IncidentApp extends Component {
                     <h1>Incident Application</h1>
                     <Switch>
                         <Route path="/" exact component={ListIncidentsComponent} />
-                        <Route path="/incident" exact component={ListIncidentsComponent} />
-                        <Route path="/incident/:id" component={IncidentComponent} />
+                        <Route path="/incidents" exact component={ListIncidentsComponent} />
+                        <Route path="/incident" component={IncidentComponent} />
                     </Switch>
                 </>
             </Router>

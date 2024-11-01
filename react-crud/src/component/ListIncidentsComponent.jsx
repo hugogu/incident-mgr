@@ -5,15 +5,20 @@ class ListIncidentsComponent extends Component {
 
     constructor(props) {
         super(props);
+        const queryParams = new URLSearchParams(this.props.location.search);
         this.state = {
             incidents: [],
-            message: null
+            message: null,
+            page: parseInt(queryParams.get('page')) || 0,
+            size: parseInt(queryParams.get('size')) || 10,
+            totalPages: 0
         }
         this.refreshIncidents = this.refreshIncidents.bind(this)
         this.deleteIncidentClicked = this.deleteIncidentClicked.bind(this)
         this.processIncidentClicked = this.processIncidentClicked.bind(this)
         this.resolveIncidentClicked = this.resolveIncidentClicked.bind(this)
         this.addIncidentClicked = this.addIncidentClicked.bind(this)
+        this.handlePageChange = this.handlePageChange.bind(this)
     }
 
     componentDidMount() {
@@ -21,10 +26,14 @@ class ListIncidentsComponent extends Component {
     }
 
     refreshIncidents() {
-        IncidentDataService.retrieveAllIncidents("hugo").then(
+        console.log("refreshIncidents with page: " + this.state.page)
+        IncidentDataService.retrieveAllIncidents("hugo", this.state.page, this.state.size).then(
             response => {
                 console.log(response)
-                this.setState({incidents: response.data.content})
+                this.setState({
+                    incidents: response.data.content,
+                    totalPages: response.data.totalPages
+                })
             }
         )
     }
@@ -60,7 +69,14 @@ class ListIncidentsComponent extends Component {
     }
 
     addIncidentClicked() {
-        this.props.history.push(`/incident/-1`)
+        this.props.history.push(`/incident`)
+    }
+
+    handlePageChange(newPage) {
+        this.setState({ page: newPage }, () => {
+            this.props.history.push(`/incidents?page=${this.state.page}&size=${this.state.size}`);
+            this.refreshIncidents();
+        });
     }
 
     render() {
@@ -109,8 +125,18 @@ class ListIncidentsComponent extends Component {
                         }
                         </tbody>
                     </table>
-                    <div className="row">
+                    <div className="d-flex">
                         <button className="btn btn-success" onClick={this.addIncidentClicked}>Add</button>
+                        <div className="ml-auto">
+                            <button className="btn btn-primary"
+                                    onClick={() => this.handlePageChange(this.state.page - 1)}
+                                    disabled={this.state.page === 0}>Previous
+                            </button>
+                            <button className="btn btn-primary"
+                                    onClick={() => this.handlePageChange(this.state.page + 1)}
+                                    disabled={this.state.page + 1 >= this.state.totalPages}>Next
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

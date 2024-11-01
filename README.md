@@ -64,9 +64,11 @@ In your working directory is in the root of the project, do:
     docker-compose up -d
     ```
    
-### Frontend
+### Frontend (Optional)
 
-There are two scenarios:
+docker-compose should have brought up everything, if you want to run the frontend separately, do these:
+
+Depending on scenarios:
 
 * For local development
    ```shell
