@@ -12,6 +12,12 @@ spring:
   jpa:
     # Better control transaction scope explicitly.
     open-in-view: false
+  data:
+    rest:
+      base-path: /rest
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
 
 management:
   endpoints:
