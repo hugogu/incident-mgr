@@ -13,6 +13,7 @@ class IncidentComponent extends Component {
             assignee: "",
             status: "OPEN",
             description: "",
+            message: null,
         }
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -28,7 +29,14 @@ class IncidentComponent extends Component {
         }
 
         IncidentDataService.fireIncident(incident).then(
-            () => this.props.history.push('/incidents?page=0')
+            response => {
+                console.log("Received response:" + response)
+                this.props.history.push('/incidents?page=0')
+            },
+            error => {
+                console.log("Received error:" + error.response)
+                this.setState({ message: `Failed to create incident because ${error.response.data.detail}.` })
+            }
         )
     }
 
@@ -38,7 +46,8 @@ class IncidentComponent extends Component {
 
         return (
             <div>
-                <h3>Course</h3>
+                <h3>Incident</h3>
+                {this.state.message && <div class="alert alert-success">{this.state.message}</div>}
                 <div className="container">
                     <Formik
                         initialValues={{title, description, status, assignee, raiser }}
